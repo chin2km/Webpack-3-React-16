@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import mindBlown from '../assets/mind-blown.gif'
 
-import '../css/base.css';
+import '../css/base.less';
 
 export default class Hello extends Component {
   render() {

@@ -8,6 +8,10 @@ const paths = {
     JS: path.resolve(__dirname, 'src/js')
 };
 
+const extractLess = new ExtractTextPlugin({
+    filename: "style.bundle.css"
+});
+
 module.exports = {
     entry: path.join(paths.JS, 'app.js'),
     output: {
@@ -18,7 +22,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(paths.SRC, 'index.html')
         }),
-        new ExtractTextPlugin('style.bundle.css')
+        extractLess
     ],
     module: {
         rules: [
@@ -26,16 +30,20 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
-            }, 
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract({
-                    use: 'css-loader'
-                })
             },
             {
                 test: /\.(mp4|mp3|svg|png|jpg|gif)$/,
                 use: ['file-loader']
+            },
+            {
+                test: /\.less$/,
+                use: extractLess.extract({
+                    use: [
+                        "css-loader",
+                        "less-loader"
+                    ],
+                    fallback: "style-loader"
+                })
             }
         ]
     },
