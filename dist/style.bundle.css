@@ -1,0 +1,11 @@
+body {
+  background: #ff7b00;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+}
+body .mind-blown {
+  width: 50%;
+}
