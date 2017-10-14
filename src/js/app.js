@@ -1,2 +1,14 @@
-const NAME = `www.chin2km.com`
-console.log(`hey ${NAME} !`);
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+
+export default class Hello extends Component {
+  render() {
+    return (
+      <div>
+        Hello from React fibre!
+      </div>
+    );
+  }
+}
+
+render(<Hello />, document.getElementById('root'));
